@@ -38,3 +38,15 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 ## S01E03 deliverable
 
 The corrected #4471 page is `src/routes/kb/incidents/4471/+page.svx`. Its static desk view is `rendered/kb/incidents/4471/index.html`.
+
+## Build and render
+
+Requires Node.js 22.17 or newer. The exported source uses Svelte components and `.svx` pages; SvelteKit with mdsvex compiles the source and prerenders every KB route.
+
+```sh
+npm ci
+npm run check
+npm run render:kb
+```
+
+`npm run render:kb` writes the complete static site, including the generated `rendered/_app/` assets and all four KB routes, into `rendered/`. Treat those files as build output: edit the `.svx`, Svelte, and data sources, then rerun the renderer rather than hand-editing HTML. Preview the output with any static HTTP server rooted at `rendered/`.
