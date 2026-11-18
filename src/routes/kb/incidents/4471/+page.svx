@@ -2,8 +2,8 @@
 layout: runbook
 title: '#4471 · two date problems'
 owner: support desk
-status: triaged
-reviewed: 2026-11-17
+status: updated
+reviewed: 2026-11-18
 signature: v1.eyJzdWIiOiIxMjM2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTQ5MjkyNzMsImV4cCI6MTc5NTAxNTY3M30.fSUwv5WMMdsvAUDanSIc0kdHsEe4jItYPVie7bkoyw0
 ---
 
@@ -29,6 +29,12 @@ Keep the parser problem and the booking-v3 form-hint problem in separate tickets
 ## Problems and tickets
 
 <CauseTable ticket={4471} issueLinks={issueLinks} />
+
+## Engineering update · 5 October
+
+The support desk closed #4471 on 5 October. The parser problem is fixed by `fix(dates): parse dd/mm for eu locales`. The form-hint problem will not be fixed because booking-v3 has been retired.
+
+The repo issues reflect those outcomes: [parser #1 is completed](https://github.com/geraldinetay18/what-it-shows-s01e03/issues/1), while [hint #2 is not planned](https://github.com/geraldinetay18/what-it-shows-s01e03/issues/2).
 
 ## Why these are two causes
 
