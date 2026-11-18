@@ -30,9 +30,12 @@ Keep the parser problem and the booking-v3 form-hint problem in separate tickets
 
 <CauseTable ticket={4471} issueLinks={issueLinks} />
 
-## Engineering update · 5 October
+## Engineering update
 
-The support desk closed #4471 on 5 October. The parser problem is fixed by `fix(dates): parse dd/mm for eu locales`. The form-hint problem will not be fixed because booking-v3 has been retired.
+**#4471 · closed 05 oct**
+
+- **parser — fixed:** `fix(dates): parse dd/mm for eu locales`
+- **hint — won't fix:** booking-v3 form retired.
 
 The repo issues reflect those outcomes: [parser #1 is completed](https://github.com/geraldinetay18/what-it-shows-s01e03/issues/1), while [hint #2 is not planned](https://github.com/geraldinetay18/what-it-shows-s01e03/issues/2).
 
