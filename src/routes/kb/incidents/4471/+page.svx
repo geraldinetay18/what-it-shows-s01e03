@@ -1,0 +1,43 @@
+---
+layout: runbook
+title: '#4471 · two date problems'
+owner: support desk
+status: triaged
+reviewed: 2026-11-17
+signature: v1.eyJzdWIiOiIxMjM2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTQ5MjkyNzMsImV4cCI6MTc5NTAxNTY3M30.fSUwv5WMMdsvAUDanSIc0kdHsEe4jItYPVie7bkoyw0
+---
+
+<script>
+  import Callout from '#lib/kb/Callout.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const issueLinks = {
+    parser: { number: 1, url: 'https://github.com/geraldinetay18/what-it-shows-s01e03/issues/1' },
+    hint: { number: 2, url: 'https://github.com/geraldinetay18/what-it-shows-s01e03/issues/2' },
+  };
+
+  const signature = 'v1.eyJzdWIiOiIxMjM2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTQ5MjkyNzMsImV4cCI6MTc5NTAxNTY3M30.fSUwv5WMMdsvAUDanSIc0kdHsEe4jItYPVie7bkoyw0';
+</script>
+
+Ticket #4471 holds reports from two separate date problems, not one bug. The export contains overlapping pages, so counts below deduplicate by report ID and classify each report by tenant locale and booking form.
+
+<Callout>
+Keep the parser problem and the booking-v3 form-hint problem in separate tickets. The intake tag is a guess, not the cause.
+</Callout>
+
+## Problems and tickets
+
+<CauseTable ticket={4471} issueLinks={issueLinks} />
+
+## Why these are two causes
+
+The shared parser reads every date month first. A day-first tenant therefore gets a swapped date through app, email, or a booking-v2 form. By contrast, booking-v3 displays `MM/DD/YYYY`; for the three day-first tenants, that hint conflicts with the tenant's date order. The KB's cause logic assigns those form reports to `hint`, not `parser`.
+
+Intake tags do not reliably identify the cause: 23 parser reports were tagged `hint`, while 15 form-hint reports were tagged `parser`. The five reports in the desk's one-day-move note (`R-41202`, `R-41209`, `R-41236`, `R-41344`, `R-41620`) remain in the parser group; they are not a third cause.
+
+## Sources and counting
+
+Counts use `uniqueById` on the overlapping export rows, then the KB's `causeOf` logic with each tenant's locale and form. The component above computes the report totals, cause count, intake tags, tenant counts, and date ranges from the export.
+
+<RenderStamp {signature} />
